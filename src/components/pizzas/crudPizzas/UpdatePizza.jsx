@@ -60,6 +60,27 @@ const UpdatePizza = ({ crud, setCrud, pizza, setclickEditImg }) => {
             defaultValue={pizza.description}
           />
         </div>
+        <div className="crud__div">
+          <label htmlFor="label">Etiqueta:</label>
+          <input
+            {...register('label')}
+            id="label"
+            type="text"
+            defaultValue={pizza.label}
+            required
+          />
+        </div>
+
+        <div className="crud__div">
+          <label htmlFor="labelColor">Color de la Etiqueta:</label>
+          <input
+            {...register('labelColor')}
+            id="labelColor"
+            type="color"
+            defaultValue={pizza.labelColor} // Reemplaza con un valor de color hexadecimal válido
+            required
+          />
+        </div>
         <button type="submit" className="crud__button">
           Editar product
         </button>

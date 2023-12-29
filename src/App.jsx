@@ -8,6 +8,9 @@ import Users from './pages/Users';
 import Header from './pages/Header';
 import Pizzas from './pages/Pizzas';
 import Sections from './pages/Sections';
+import Deliveries from './pages/Deliveries';
+import YourOrders from './pages/YourOrders';
+import YourClients from './pages/YourClients';
 
 function App() {
   return (
@@ -15,11 +18,14 @@ function App() {
       <ToastContainer />
       <Header />
       <Routes>
+        <Route path="/users" element={<Users />} />
         <Route path="/log-in" element={<Login />} />
         <Route element={<ProtectedRoutes />}>
-          <Route path="/" element={<Sections />} />
+          <Route path="/" element={<YourOrders />} />
+          <Route path="/secciones" element={<Sections />} />
           <Route path="/seccion/:id" element={<Pizzas />} />
-          <Route path="/users" element={<Users />} />
+          <Route path="/deliveries" element={<Deliveries />} />
+          <Route path="/your-clients" element={<YourClients />} />
         </Route>
       </Routes>
     </div>

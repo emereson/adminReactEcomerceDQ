@@ -40,7 +40,6 @@ const CreateOptionPizza = ({ crud, setCrud, pizza }) => {
             {...register('name')}
             id="name"
             type="text"
-            placeholder="mediana"
             required
           />
         </div>
@@ -50,7 +49,6 @@ const CreateOptionPizza = ({ crud, setCrud, pizza }) => {
             {...register('size')}
             id="size"
             type="text"
-            placeholder="36cm"
             required
           />
         </div>
@@ -65,7 +63,15 @@ const CreateOptionPizza = ({ crud, setCrud, pizza }) => {
             })}
             id="price"
             type="text"
-            placeholder="15.5"
+            required
+          />
+        </div>
+        <div className="crud__div">
+          <label htmlFor="discount">Descuento:</label>
+          <input
+            {...register('discount')}
+            id="discount"
+            type="number"
             required
           />
         </div>

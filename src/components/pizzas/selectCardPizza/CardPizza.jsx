@@ -10,6 +10,12 @@ const CardPizza = ({ pizza, crud, setCrud }) => {
 
   return (
     <div className="cardProduct__contianer">
+      <p
+        className="cardProduct__label"
+        style={{ backgroundColor: `${pizza.labelColor}` }}
+      >
+        {pizza.label}
+      </p>
       <div className="cardProduct__imgContainer">
         <span>{pizza.purchasedProduct}</span>
         <i

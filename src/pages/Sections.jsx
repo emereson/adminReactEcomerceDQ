@@ -21,7 +21,7 @@ const sections = () => {
   }, [crud]);
 
   return (
-    <section className="sections__container">
+    <div className="sections__container">
       <article className="sections__articleOne">
         <h2>Secciones</h2>{' '}
         <p onClick={() => setCrud('createSection')}>Crear Sección</p>
@@ -53,7 +53,7 @@ const sections = () => {
           </div>
         ))}
       </article>
-    </section>
+    </div>
   );
 };
 

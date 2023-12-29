@@ -23,6 +23,8 @@ const CreatePizza = ({ crud, setCrud, categories }) => {
     const formData = new FormData();
     formData.append('name', data.name);
     formData.append('description', data.description);
+    formData.append('label', data.label);
+    formData.append('labelColor', data.labelColor);
 
     if (selectedFile) {
       formData.append('productImg', selectedFile);
@@ -33,6 +35,7 @@ const CreatePizza = ({ crud, setCrud, categories }) => {
       .then((res) => {
         toast.success('El producto se creo exitosamente');
         deleteSelectImgClick();
+        reset();
       })
       .catch((err) => {
         console.log(err);
@@ -43,8 +46,9 @@ const CreatePizza = ({ crud, setCrud, categories }) => {
         }
         deleteSelectImgClick();
       });
-    reset();
   };
+
+  const defaultColor = '#rrggbb';
 
   return (
     <div
@@ -92,6 +96,27 @@ const CreatePizza = ({ crud, setCrud, categories }) => {
             id="description"
             type="text"
             rows="4"
+            required
+          />
+        </div>
+        <div className="crud__div">
+          <label htmlFor="label">Etiqueta:</label>
+          <input
+            {...register('label')}
+            id="label"
+            type="text"
+            defaultValue="no"
+            required
+          />
+        </div>
+
+        <div className="crud__div">
+          <label htmlFor="labelColor">Color de la Etiqueta:</label>
+          <input
+            {...register('labelColor')}
+            id="labelColor"
+            type="color"
+            defaultValue="#ff0000" // Reemplaza con un valor de color hexadecimal válido
             required
           />
         </div>

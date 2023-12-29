@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import config from '../../../utils/getToken';
 
 const DeleteCategoryPizza = ({ crud, setCrud, categories }) => {
-  const { register, handleSubmit } = useForm();
+  const { handleSubmit } = useForm();
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   const onSubmit = async () => {
@@ -39,7 +39,6 @@ const DeleteCategoryPizza = ({ crud, setCrud, categories }) => {
           <label>Seleccione la categoría:</label>
           <select
             required
-            {...register('category')}
             onChange={(e) => {
               const selectedCategory = JSON.parse(e.target.value);
               setSelectedCategory(selectedCategory);

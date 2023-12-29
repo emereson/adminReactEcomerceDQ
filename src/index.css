@@ -25,7 +25,7 @@
 
 :root {
   --body-black: #000000;
-  --body-yeloow: rgb(233, 208, 49);
+  --body-yeloow: #FEB901;
   --body-white: #ffffff;
   --body-gray: #212121;
   --body-red: #F1192F;
@@ -42,7 +42,7 @@ body {
   height: 100%;
   min-width: 360px;
   font-family: 'Jost', sans-serif;
-  background-color: var(--body-white);
+  background-color: #f8f8f8;
   letter-spacing: 0.3px;
   overflow: hidden;
 }
