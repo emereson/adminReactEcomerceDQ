@@ -15,9 +15,9 @@ const Header = () => {
   return (
     <header className="header__container">
       <section className="header__section">
-        <img src={userData?.user.userImg} alt="" />
+        <img src={userData?.user?.userImg} alt="" />
         <h3>
-          {userData?.user.name} {userData?.user.lastName}
+          {userData?.user.name} {userData?.user?.lastName}
         </h3>
       </section>
       <ul className="header__ul">
