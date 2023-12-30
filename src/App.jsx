@@ -11,6 +11,7 @@ import Sections from './pages/Sections';
 import Deliveries from './pages/Deliveries';
 import YourOrders from './pages/YourOrders';
 import YourClients from './pages/YourClients';
+import DataClient from './pages/DataClient';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/seccion/:id" element={<Pizzas />} />
           <Route path="/deliveries" element={<Deliveries />} />
           <Route path="/your-clients" element={<YourClients />} />
+          <Route path="/data-client/:id" element={<DataClient />} />
         </Route>
       </Routes>
     </div>

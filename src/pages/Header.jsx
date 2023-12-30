@@ -1,10 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './pagesStyle/header.css';
 
 const Header = () => {
   const userDataJSON = localStorage.getItem('userData');
   const userData = JSON.parse(userDataJSON);
+  const location = useLocation();
+  const [url, setUrl] = useState('/');
+
+  useEffect(() => {
+    setUrl(location.pathname);
+  }, [location.pathname]);
 
   return (
     <header className="header__container">
@@ -16,23 +22,60 @@ const Header = () => {
       </section>
       <ul className="header__ul">
         <li>
-          <Link to="/">Tus Pedidos</Link>
+          <Link
+            to="/"
+            style={url === '/' ? { color: 'var(--body-red)' } : {}}
+          >
+            Tus Pedidos
+          </Link>
         </li>
 
         <li>
-          <Link to="/secciones">Secciones</Link>
+          <Link
+            to="/secciones"
+            style={
+              url === '/secciones' ? { color: 'var(--body-red)' } : {}
+            }
+          >
+            Secciones
+          </Link>
         </li>
         <li>
-          <Link to="/your-clients">Tus Clientes</Link>
+          <Link
+            to="/your-clients"
+            style={
+              url === '/your-clients'
+                ? { color: 'var(--body-red)' }
+                : {}
+            }
+          >
+            Tus Clientes
+          </Link>
         </li>
         <li>
-          <Link to="/deliveries">Zonas de reparto</Link>
+          <Link
+            to="/deliveries"
+            style={
+              url === '/deliveries'
+                ? { color: 'var(--body-red)' }
+                : {}
+            }
+          >
+            Zonas de reparto
+          </Link>
         </li>
         <li>
-          <Link to="/users">Usuarios</Link>
+          <Link
+            to="/users"
+            style={
+              url === '/users' ? { color: 'var(--body-red)' } : {}
+            }
+          >
+            Usuarios
+          </Link>
         </li>
 
-        <li>Cerrar Sesion</li>
+        <li onClick={() => localStorage.clear()}>Cerrar Sesion</li>
       </ul>
     </header>
   );

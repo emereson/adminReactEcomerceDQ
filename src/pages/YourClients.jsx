@@ -24,8 +24,6 @@ const YourClients = () => {
       .catch((err) => console.log(err));
   }, [search, currentPage]);
 
-  console.log(allClients);
-
   return (
     <div className="sections__container">
       <article className="sections__articleOne">

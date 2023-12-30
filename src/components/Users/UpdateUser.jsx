@@ -3,97 +3,87 @@ import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import '../../pages/pagesStyle/crudStyle.css';
-const CreateUser = ({ crud, setCrud }) => {
+import config from '../../utils/getToken';
+
+const UpdateUser = ({ crud, setCrud, selectUser }) => {
   const { register, handleSubmit, reset } = useForm();
 
   const submit = (data) => {
-    const url = `${import.meta.env.VITE_URL_API}/user/signup`;
+    const url = `${import.meta.env.VITE_URL_API}/user/${
+      selectUser?.id
+    }`;
 
     axios
-      .post(url, data)
+      .patch(url, data, config)
       .then((res) => {
-        toast.success('El usuario  se creo exitosamente');
+        toast.success('El usuario  se edito exitosamente');
         setCrud('');
       })
       .catch((err) => {
         console.log(err);
-        toast.error('Hubo un error al crear el usuario');
+        toast.error('Hubo un error al editar el usuario');
         setCrud('');
       });
     reset();
   };
-
   return (
     <div
       className={`crud__container  ${
-        crud === 'createUser' ? '' : 'closeCrud__container'
+        crud === 'updateUser' ? '' : 'closeCrud__container'
       }`}
     >
       <i onClick={() => setCrud('')} className="bx bxs-x-circle"></i>
       <form className="crud__form" onSubmit={handleSubmit(submit)}>
-        <h3>Crear Usuario</h3>
+        <h3>Editar Usuario</h3>
         <div className="crud__div">
-          <label htmlFor="name">Nombre:</label>
+          <label htmlFor="updateName">Nombre:</label>
           <input
             {...register('name')}
-            id="name"
+            id="updateName"
             type="text"
+            defaultValue={selectUser?.name}
             required
           />
         </div>
         <div className="crud__div">
-          <label htmlFor="lastName">Apellidos:</label>
+          <label htmlFor="updateLastName">Apellidos:</label>
           <input
             {...register('lastName')}
-            id="lastName"
+            id="updateLastName"
             type="text"
+            defaultValue={selectUser?.lastName}
             required
           />
         </div>
         <div className="crud__div">
-          <label htmlFor="dni">DNI:</label>
-          <input
-            {...register('dni')}
-            id="dni"
-            type="text"
-            maxLength="9"
-            required
-          />
-        </div>
-        <div className="crud__div">
-          <label htmlFor="phoneNumber">Numero de telefono:</label>
+          <label htmlFor="updatePhoneNumber">
+            Numero de telefono:
+          </label>
           <input
             {...register('phoneNumber')}
-            id="phoneNumber"
+            id="updatePhoneNumber"
             type="number"
+            defaultValue={selectUser?.phoneNumber}
             required
           />
         </div>
         <div className="crud__div">
-          <label htmlFor="address">Dirrección:</label>
+          <label htmlFor="updateAddress">Dirrección:</label>
           <input
             {...register('address')}
-            id="address"
+            id="updateAddress"
             type="text"
-            required
-          />
-        </div>
-        <div className="crud__div">
-          <label htmlFor="password">Contraseña:</label>
-          <input
-            {...register('password')}
-            id="password"
-            type="password"
+            defaultValue={selectUser?.address}
             required
           />
         </div>
 
         <button type="submit" className="crud__button">
-          Crear Usuario
+          Update Usuario
         </button>
       </form>
     </div>
   );
 };
 
-export default CreateUser;
+export default UpdateUser;

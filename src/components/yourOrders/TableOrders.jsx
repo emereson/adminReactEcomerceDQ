@@ -57,12 +57,12 @@ const TableOrders = ({
       <thead>
         <tr>
           <th>N°</th>
-          <th>Hora</th>
-          <th>Cliente</th>
-          <th>Contacto</th>
-          <th>Pedido</th>
+          <th>Fecha y Hora</th>
+          <th>Datos del Cliente</th>
+          <th>Datos del Pedido</th>
           <th>Delivery</th>
           <th>Mensaje</th>
+          <th>Total</th>
           <th>Estado</th>
         </tr>
       </thead>
@@ -70,41 +70,50 @@ const TableOrders = ({
         {sortedOrders?.map((order, index) => (
           <tr key={order.id}>
             <td>{sortedOrders.length - index}</td>
-            <td>{order.hour}</td>
-            <td style={{ maxWidth: '200px' }}>{order.name}</td>
-            <td style={{ maxWidth: '300px' }}>
+            <td>
               <ul>
-                <li>correo: {order.email}</li>
-                <li>celular: {order.phoneNumber}</li>
+                <li>{order.date}</li>
+                <li>{order.hour}</li>
               </ul>
             </td>
             <td>
-              {order?.orders.map((order, index) => (
-                <ul key={order.id}>
-                  <li style={{ marginTop: '-0.3em' }}>
-                    Orden {index + 1}:
+              <ul>
+                <li>Nombre: {order.name}</li>
+                <li>Correo: {order.email}</li>
+                <li>Celular: {order.phoneNumber}</li>
+              </ul>
+            </td>
+            <td>
+              {order.orders.map((product) => (
+                <ul
+                  style={{
+                    paddingBottom: '5px',
+                    borderBottom: '1px solid #ccc',
+                  }}
+                  key={product.id}
+                >
+                  <li style={{ fontWeight: '600' }}>
+                    cantidad: {product.numberOrder} , Precio Unitario:
+                    s/{product.unitPrice}, SubTotal: s/
+                    {product.totalPrice}
                   </li>
-                  <li style={{ marginTop: '-0.3em' }}>
-                    {order.numberOrder}, {order.name}, {order.option}
+                  <li>
+                    pedido: {product.name} {product.option}{' '}
+                    {product.extras.map((extra) => extra.name)}
                   </li>
-                  {order.extras.length > 0 ? (
-                    <li style={{ marginTop: '-0.3em' }}>
-                      {order.extras.map((extra) => extra.name)}
-                    </li>
-                  ) : (
-                    ''
-                  )}
                 </ul>
               ))}
             </td>
             <td>
               <ul>
-                <li>{order.deliveryName}</li>
-                <li>Dirección: {order.address}</li>
+                <li>Dirrecion: {order.address}</li>
                 <li>Referencia: {order.reference}</li>
+                <li>{order.deliveryName}</li>
+                <li>precio:s/{order.deliveryPrice}</li>
               </ul>
             </td>
-            <td>{order.message}</td>
+            <td style={{ maxWidth: '200px' }}>{order.message}</td>
+            <td>s/{order?.total}</td>
             {getStatusLabel(order)}
           </tr>
         ))}

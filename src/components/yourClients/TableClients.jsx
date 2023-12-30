@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const TableClients = ({ allClients }) => {
   return (
@@ -25,7 +26,9 @@ const TableClients = ({ allClients }) => {
             <td>{client.email}</td>
             <td>{client.dni}</td>
             <td>{client.phoneNumber}</td>
-            <td>ver mas</td>
+            <td>
+              <Link to={`/data-client/${client.id}`}>Ver mas</Link>
+            </td>
           </tr>
         ))}
       </tbody>

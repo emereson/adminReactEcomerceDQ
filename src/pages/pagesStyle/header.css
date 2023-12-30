@@ -22,6 +22,7 @@
     gap: 0.5em;
 }
 
+
 .header__section img {
     width: 10em;
     height: 10em;
@@ -31,7 +32,7 @@
 .header__section h3 {
     font-size: 1.2em;
     width: 100%;
-    color: var(--text-color-white);
+    color: var(--body-white);
     text-align: center;
 
 
