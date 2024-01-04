@@ -17,7 +17,7 @@ const Header = () => {
       <section className="header__section">
         <img src={userData?.user?.userImg} alt="" />
         <h3>
-          {userData?.user.name} {userData?.user?.lastName}
+          {userData?.user?.name} {userData?.user?.lastName}
         </h3>
       </section>
       <ul className="header__ul">
@@ -75,7 +75,14 @@ const Header = () => {
           </Link>
         </li>
 
-        <li onClick={() => localStorage.clear()}>Cerrar Sesion</li>
+        <li
+          onClick={() => {
+            localStorage.clear();
+            window.location.reload();
+          }}
+        >
+          Cerrar Sesion
+        </li>
       </ul>
     </header>
   );

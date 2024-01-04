@@ -11,6 +11,7 @@ const TableClients = ({ allClients }) => {
           <th>Email</th>
           <th>Dni</th>
           <th>Celular</th>
+          <th>Cumpleaños</th>
           <th>Ver Mas</th>
         </tr>
       </thead>
@@ -26,6 +27,7 @@ const TableClients = ({ allClients }) => {
             <td>{client.email}</td>
             <td>{client.dni}</td>
             <td>{client.phoneNumber}</td>
+            <td>{client.date}</td>
             <td>
               <Link to={`/data-client/${client.id}`}>Ver mas</Link>
             </td>
