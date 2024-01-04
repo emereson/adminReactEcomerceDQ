@@ -10,8 +10,13 @@ import UpdateOrder from '../components/yourOrders/UpdateOrder';
 const YourOrders = () => {
   const getFormattedDate = () => {
     const currentDate = new Date();
-    return `${currentDate.getDate()}-${
-      currentDate.getMonth() + 1
+    const day =
+      currentDate.getDate() < 10
+        ? `0${currentDate.getDate()}`
+        : currentDate.getDate();
+    const month = currentDate.getMonth() + 1;
+    return `${day}-${
+      month < 10 ? `0${month}` : month
     }-${currentDate.getFullYear()}`;
   };
 
@@ -31,6 +36,8 @@ const YourOrders = () => {
       .then((res) => setAllOrders(res.data))
       .catch((err) => console.log(err));
   }, [date, statusOrder, crud]);
+
+  console.log(getFormattedDate());
 
   return (
     <div className="sections__container">
