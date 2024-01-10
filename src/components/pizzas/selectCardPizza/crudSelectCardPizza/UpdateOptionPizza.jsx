@@ -84,7 +84,7 @@ const UpdateOptionPizza = ({ crud, setCrud, clickOptionData }) => {
         </div>
 
         <button type="submit" className="crud__button">
-          Editar Extra
+          Editar Opcion
         </button>
       </form>
     </div>
