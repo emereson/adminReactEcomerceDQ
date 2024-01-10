@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './pagesStyle/header.css';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const userDataJSON = localStorage.getItem('userData');
+  const navigate = useNavigate();
   const userData = JSON.parse(userDataJSON);
   const location = useLocation();
   const [url, setUrl] = useState('/');
@@ -78,7 +80,7 @@ const Header = () => {
         <li
           onClick={() => {
             localStorage.clear();
-            window.location.reload();
+            navigate('/');
           }}
         >
           Cerrar Sesion
